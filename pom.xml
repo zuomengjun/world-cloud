@@ -58,6 +58,7 @@
         <module>world-eureka-01</module>
         <module>world-eureka-02</module>
         <module>world-eureka-03</module>
+        <module>world-config</module>
     </modules>
 
 </project>
