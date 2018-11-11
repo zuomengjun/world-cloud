@@ -59,6 +59,7 @@
         <module>world-eureka-02</module>
         <module>world-eureka-03</module>
         <module>world-config</module>
+        <module>world-provider-order</module>
     </modules>
 
 </project>
