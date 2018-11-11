@@ -35,6 +35,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.win.world.order</groupId>
+            <artifactId>world-provider-order-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

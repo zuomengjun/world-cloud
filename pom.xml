@@ -42,6 +42,12 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>com.win.world.order</groupId>
+                <artifactId>world-provider-order-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -59,6 +65,7 @@
         <module>world-eureka-02</module>
         <module>world-eureka-03</module>
         <module>world-config</module>
+        <module>world-provider-api</module>
         <module>world-provider-order</module>
     </modules>
 
