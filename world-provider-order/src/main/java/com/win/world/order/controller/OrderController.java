@@ -4,6 +4,7 @@ import com.win.world.order.entity.Order;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/order")
+@RefreshScope
 public class OrderController {
 
     @Resource
@@ -22,17 +24,25 @@ public class OrderController {
     @Value("${server.port}")
     private String port;
 
+    @Value("${spring.mvc.date-format}")
+    private String mvcDateFormat;
+
+    @GetMapping("getPort")
+    public String getPort(){
+        return port;
+    }
+
+    @GetMapping("getMvcDateFormat")
+    public String getMvcDateFormat(){
+        return mvcDateFormat;
+    }
+
     @GetMapping("get/{id}")
     public Order get(@PathVariable String id){
         Order order = new Order();
         order.setId(id);
         order.setName("电视");
         return order;
-    }
-
-    @GetMapping("getPort")
-    public String getPort(){
-        return port;
     }
 
     @GetMapping("getServiceInstances")
