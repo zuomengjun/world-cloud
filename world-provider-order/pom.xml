@@ -45,7 +45,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.win.world.order</groupId>
+            <groupId>com.win.world.api</groupId>
             <artifactId>world-provider-order-api</artifactId>
         </dependency>
     </dependencies>

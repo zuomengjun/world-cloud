@@ -44,21 +44,12 @@
             </dependency>
 
             <dependency>
-                <groupId>com.win.world.order</groupId>
+                <groupId>com.win.world.api</groupId>
                 <artifactId>world-provider-order-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
     <modules>
         <module>world-eureka-01</module>
