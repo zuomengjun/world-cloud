@@ -27,6 +27,9 @@ public class OrderController {
     @Value("${spring.mvc.date-format}")
     private String mvcDateFormat;
 
+    @Value("${mypassword}")
+    private String mypassword;
+
     @GetMapping("getPort")
     public String getPort(){
         return port;
@@ -35,6 +38,11 @@ public class OrderController {
     @GetMapping("getMvcDateFormat")
     public String getMvcDateFormat(){
         return mvcDateFormat;
+    }
+
+    @GetMapping("getMypassword")
+    public String getMypassword(){
+        return mypassword;
     }
 
     @GetMapping("get/{id}")
