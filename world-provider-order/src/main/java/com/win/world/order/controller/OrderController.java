@@ -32,6 +32,7 @@ public class OrderController {
 
     @GetMapping("getPort")
     public String getPort(){
+        System.out.println("I am a Port : "+port);
         return port;
     }
 
