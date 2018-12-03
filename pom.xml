@@ -70,6 +70,7 @@
         <module>world-provider-api</module>
         <module>world-provider-order</module>
         <module>world-consumer-web</module>
+        <module>world-monitor-turbine</module>
     </modules>
 
 </project>
