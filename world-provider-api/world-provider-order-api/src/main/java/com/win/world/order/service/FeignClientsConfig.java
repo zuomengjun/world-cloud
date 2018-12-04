@@ -1,9 +1,12 @@
 package com.win.world.order.service;
 
 import feign.Request;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.ConfigurableEnvironment;
+
+import javax.annotation.PostConstruct;
 
 @Configuration
 public class FeignClientsConfig {
@@ -25,6 +28,29 @@ public class FeignClientsConfig {
         int ribbonReadTimeout = env.getProperty("feign.client.config.default.read-timeout", int.class, 15000);
 
         return new Request.Options(ribbonConnectionTimeout, ribbonReadTimeout);
+    }
+
+    /**
+     * hystrix配置单个接口属性：
+     *   1、@HystrixCommand注解配置在调用feign接口的controller方法上且@HystrixCommand注解内配置@HystrixProperty注解(属性如：execution.isolation.thread.timeoutInMilliseconds)
+     *   2、配置文件内配置属性，例如：hystrix.command.OrderClientService#get(String).execution.isolation.thread.timeoutInMilliseconds(commandKey规则：接口名#方法名(参数类型))
+     * hystrix各参数配置释义：
+     *   https://blog.csdn.net/WYA1993/article/details/82352890
+     * hystrix配置属性类
+     *   HystrixCommandProperties、HystrixThreadPoolProperties
+     * 在配置文件中配置hystrix默认属性的缺点：
+     *   每个服务调用方都需要在配置文件中配置，此处在api包中设置系统属性，凡是引用该api包的调用方以下系统属性皆生效
+     */
+    @PostConstruct
+    public void FeignProperties(){
+        String hystrixTimeoutEnable = System.getProperty("hystrix.command.default.execution.timeout.enabled");
+        String hystrixTimeout = System.getProperty("hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds");
+        if (StringUtils.isBlank(hystrixTimeoutEnable)){
+            System.setProperty("hystrix.command.default.execution.timeout.enabled", "true");
+        }
+        if (StringUtils.isBlank(hystrixTimeout)){
+            System.setProperty("hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds", "30000");
+        }
     }
 
 }
