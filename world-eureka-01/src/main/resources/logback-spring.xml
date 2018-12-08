@@ -3,6 +3,7 @@
 
     <property name="app.name" value="world-eureka-01"/>
     <property name="log.home" value="/data/logs/world-cloud/${app.name}" />
+    <property name="package.home" value="com.win.world.eureka" />
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -37,7 +38,7 @@
     </appender>
 
     <logger name="org.springframework" level="INFO" />
-    <logger name="com.win.world.eureka" level="DEBUG" />
+    <logger name="${package.home}" level="DEBUG" />
 
     <root level="WARN">
         <appender-ref ref="STDOUT" />
