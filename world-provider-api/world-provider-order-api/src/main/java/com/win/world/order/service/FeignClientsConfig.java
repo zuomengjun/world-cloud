@@ -45,11 +45,26 @@ public class FeignClientsConfig {
     public void FeignProperties(){
         String hystrixTimeoutEnable = System.getProperty("hystrix.command.default.execution.timeout.enabled");
         String hystrixTimeout = System.getProperty("hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds");
+        // 最大并发线程数
+        String coreSize = System.getProperty("hystrix.threadpool.default.coreSize");
+        // 最大队列大小
+        String maxQueueSize = System.getProperty("hystrix.threadpool.default.maxQueueSize");
+        // 队列大小临界值(队列大小达到临界值将拒绝调用fallback方法)
+        String queueSizeRejectionThreshold = System.getProperty("hystrix.threadpool.default.queueSizeRejectionThreshold");
         if (StringUtils.isBlank(hystrixTimeoutEnable)){
             System.setProperty("hystrix.command.default.execution.timeout.enabled", "true");
         }
         if (StringUtils.isBlank(hystrixTimeout)){
             System.setProperty("hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds", "30000");
+        }
+        if (StringUtils.isBlank(coreSize)){
+            System.setProperty("hystrix.threadpool.default.coreSize", "10");
+        }
+        if (StringUtils.isBlank(maxQueueSize)){
+            System.setProperty("hystrix.threadpool.default.maxQueueSize", "1200");
+        }
+        if (StringUtils.isBlank(queueSizeRejectionThreshold)){
+            System.setProperty("hystrix.threadpool.default.queueSizeRejectionThreshold", "1000");
         }
     }
 
