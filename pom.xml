@@ -71,6 +71,7 @@
         <module>world-provider-order</module>
         <module>world-consumer-web</module>
         <module>world-monitor-turbine</module>
+        <module>world-gateway</module>
     </modules>
 
 </project>
